@@ -99,6 +99,9 @@ This can be done either by using the internal daemon or cron.
 1. Systemd service - on systemd powered systems the **recommended** option
 
    ```shell
+   sudo useradd lacrosse-daemon
+   sudo adduser lacrosse-daemon dialog
+   
    sudo cp /opt/lacrosse-mqtt-gateway/template.service /etc/systemd/system/lacrosse.service
 
    sudo systemctl daemon-reload

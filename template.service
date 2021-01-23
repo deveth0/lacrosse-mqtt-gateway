@@ -5,8 +5,8 @@ After=network.target mosquitto.service
 
 [Service]
 Type=notify
-User=daemon
-Group=daemon
+User=lacrosse-daemon
+Group=lacrosse-daemon
 WorkingDirectory=/opt/lacrosse-mqtt-gateway/
 ExecStart=/usr/bin/python3 /opt/lacrosse-mqtt-gateway/lacrosse-mqtt-gateway.py
 StandardOutput=null
