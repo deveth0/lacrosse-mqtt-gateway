@@ -1,0 +1,64 @@
+# Configuration file for Lacrosse MQTT Client/Daemon/Gateway
+# Source: https://github.com/deveth0/lacrosse-mqtt-gateway
+#
+# Uncomment and adapt all settings as needed.
+
+[General]
+
+# The Jeelink adapter that should be used to connect to Lacrosse devices (Default: /dev/ttyUSB0)
+#adapter = /dev/ttyUSB0
+
+# (optional) Datarate for the Adapter (see https://www.home-assistant.io/integrations/lacrosse/#datarate)
+#datarate = 0
+# (optional) Toogle configuration for the Adapter (see https://www.home-assistant.io/integrations/lacrosse/#toggle_mask)
+#toggle_mask = 3
+#toggle_interval = 30
+
+[Daemon]
+
+# Enable or Disable an endless execution loop (Default: true)
+#enabled = true
+
+[MQTT]
+
+# The hostname or IP address of the MQTT broker to connect to (Default: localhost)
+# Also read from the MQTT_HOSTNAME environment variable
+#hostname = localhost
+
+# The TCP port the MQTT broker is listening on (Default: 1883)
+# Also read from the MQTT_PORT environment variable
+#port = 1883
+
+# Maximum period in seconds between ping messages to the broker. (Default: 60)
+#keepalive = 60
+
+# The MQTT base topic to publish all Lacrosse sensor data topics under.
+# Default depends on the configured reporting_method
+#base_topic = lacrosse
+
+# The MQTT broker authentification credentials (Default: no authentication)
+# Will also read from MQTT_USERNAME and MQTT_PASSWORD environment variables
+#username = user
+#password = pwd123
+
+# Enable TLS/SSL on the connection
+#tls = false
+
+# Path to CA Certificate file to verify host
+#tls_ca_cert =
+
+# Path to TLS client auth key file
+#tls_keyfile =
+
+# Path to TLS client auth certificate file
+#tls_certfile =
+
+[Sensors]
+
+# Add your Lacrosse sensors here. Each sensor consists of a name and an ID (1 or 2 digits)
+# Additional location information can be added to the name, delimited by an '@'.
+#
+# Examples:
+#
+#TX35@Living = 2
+#Foobar    = 64

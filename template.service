@@ -1,0 +1,20 @@
+[Unit]
+Description=Lacrosse MQTT Client/Daemon
+Documentation=https://github.com/deveth0/lacrosse-mqtt-gateway
+After=network.target mosquitto.service
+
+[Service]
+Type=notify
+User=daemon
+Group=daemon
+WorkingDirectory=/opt/lacrosse-mqtt-gateway/
+ExecStart=/usr/bin/python3 /opt/lacrosse-mqtt-gateway/lacrosse-mqtt-gateway.py
+StandardOutput=null
+#StandardOutput=syslog
+#SyslogIdentifier=lacrosse
+StandardError=journal
+Environment=PYTHONUNBUFFERED=true
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
