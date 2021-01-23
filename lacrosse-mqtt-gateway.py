@@ -163,6 +163,7 @@ used_adapter = config['General'].get('adapter', '/dev/ttyUSB0')
 datarate = config['General'].get('datarate')
 toggle_mask  = config['General'].get('toggle_mask')
 toggle_interval  = config['General'].get('toggle_interval')
+disable_led = config['General'].get('disable_led')
 
 daemon_enabled = config['Daemon'].getboolean('enabled', True)
 
@@ -224,6 +225,8 @@ if toggle_mask is not None:
     lacrosse.set_toggle_mask(toggle_mask)
 if datarate is not None:
     lacrosse.set_datarate(datarate)
+if disable_led is not None:
+    lacrosse.led_mode_state(disable_led)
 
 lacrosse.start_scan()
 

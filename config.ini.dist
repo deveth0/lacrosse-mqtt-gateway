@@ -13,6 +13,8 @@
 # (optional) Toogle configuration for the Adapter (see https://www.home-assistant.io/integrations/lacrosse/#toggle_mask)
 #toggle_mask = 3
 #toggle_interval = 30
+# Disable the led
+#disable_led = false
 
 [Daemon]
 
