@@ -33,7 +33,6 @@ if False:
 
 class LaCrosseSensor:
     """Implementation of a Lacrosse sensor."""
-
     _temperature = None
     _humidity = None
     _low_battery = None
@@ -42,6 +41,7 @@ class LaCrosseSensor:
     def __init__(self, lacrosse, device_id, name):
         """Initialize the sensor."""
         self._name = name
+        self._name_clean = clean_identifier(name)
         self._device_id = device_id
         self._value = None
 
@@ -85,7 +85,7 @@ class LaCrosseSensor:
         data["humidity"]= self._humidity
         data["low_battery"]= self._low_battery
         print_line('Result: {}'.format(json.dumps(data)))
-        publish(self._name, data)
+        publish(self._name_clean, data)
 
 
 # Argparse
