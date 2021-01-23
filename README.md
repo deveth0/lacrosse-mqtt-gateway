@@ -100,7 +100,7 @@ This can be done either by using the internal daemon or cron.
 
    ```shell
    sudo useradd lacrosse-daemon
-   sudo adduser lacrosse-daemon dialog
+   sudo adduser lacrosse-daemon dialout
    
    sudo cp /opt/lacrosse-mqtt-gateway/template.service /etc/systemd/system/lacrosse.service
 
