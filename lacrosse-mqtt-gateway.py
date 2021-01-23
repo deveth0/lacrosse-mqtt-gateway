@@ -24,7 +24,7 @@ project_url = 'https://github.com/deveth0/lacrosse-mqtt-gateway'
 parameters = OrderedDict([
     ("temperature", dict(name="Temperature", name_pretty='Humidity', typeformat='%.1f', unit='°C', device_class="temperature")),
     ("humidity", dict(name="Humidity", name_pretty='Humidity', typeformat='%f', unit='%', device_class="humidity")),
-    ("low_battery", dict(name="Battery", name_pretty='Sensor Battery Level Low', device_class="battery"))
+    ("battery", dict(name="Battery", name_pretty='Sensor Battery Level', typeformat='%d', unit='%', device_class="battery"))
 ])
 
 if False:
@@ -83,7 +83,10 @@ class LaCrosseSensor:
         data = OrderedDict()
         data["temperature"]= self._temperature
         data["humidity"]= self._humidity
-        data["low_battery"]= self._low_battery
+        if self._low_battery:
+          data["battery"] = 0
+        else:
+          data["battery"]= 100
         print_line('Result: {}'.format(json.dumps(data)))
         publish(self._name_clean, data)
 
@@ -254,8 +257,8 @@ for [sensor_name, lacrosse] in sensors.items():
     for [sensor, params] in parameters.items():
         discovery_topic = 'homeassistant/sensor/{}/{}/config'.format(sensor_name.lower(), sensor)
         payload = OrderedDict()
-        payload['name'] = "{} {}".format(sensor_name, sensor.title())
-        payload['unique_id'] = "{}-{}".format(sensor_name.lower(), sensor)
+        payload['name'] = "{} {}".format(lacrosse.name, sensor.title())
+        payload['unique_id'] = "{}-{}".format(lacrosse.name.lower(), sensor)
         if 'unit' in params:
             payload['unit_of_measurement'] = params['unit']
         if 'device_class' in params:
@@ -266,7 +269,7 @@ for [sensor_name, lacrosse] in sensors.items():
                 'identifiers' : ["Lacrosse{}".format(lacrosse.device_id.lower().replace(":", ""))],
                 'connections' : [["device_id", lacrosse.device_id.lower()]],
                 'manufacturer' : 'Lacrosse',
-                'name' : sensor_name,
+                'name' : lacrosse.name,
                 'model' : 'Lacrosse Sensor',
         }
         print_line('Payload: {}'.format(json.dumps(payload)))

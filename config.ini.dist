@@ -58,9 +58,8 @@
 [Sensors]
 
 # Add your Lacrosse sensors here. Each sensor consists of a name and an ID (1 or 2 digits)
-# Additional location information can be added to the name, delimited by an '@'.
 #
 # Examples:
 #
-#TX35@Living = 2
+#Lacrosse Livingroom = 2
 #Foobar    = 64

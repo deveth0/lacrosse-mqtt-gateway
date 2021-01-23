@@ -28,7 +28,7 @@ The Lacrosse sensors offer the following readings:
 |-----------------|-------------|
 | `temperature`   | Air temperature, in [°C] (0.1°C resolution |
 | `humidity`      | Humidity, in [%] |
-| `low_battery`   | Boolean on low battery |
+| `battery`       | Lacrosse Sensors only provide a low battery warning, therefor you'll only see 100% and 0% here |
 
 ## Prerequisites
 
